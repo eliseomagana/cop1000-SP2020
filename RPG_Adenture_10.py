@@ -1,6 +1,6 @@
 import os
 import time
-#after the end of the world
+# Changes by Eliseo Magana
 def menuScreen():
     print("WELCOME!")
     print("RPG Adventure 10")
@@ -58,7 +58,7 @@ def dance_off():
     return decision
 def learn_a_lesson():
     decision = input()
-    while decision != "yes" and decision != "no":
+    while decision.lower() != "yes" and decision != "no":
         print("Invalid")
         print('The Nacho Reaper tell you to learn new lesson : Do you want to learn?')
         decision = input()
@@ -71,13 +71,40 @@ def learn_a_lesson():
     return decision
 def goLeftOrRightDownTunnel():
     decision = input('Do you choose to walk to the left or right tunnel?')
-    if decision == 'left':
+    while decision.lower() != 'left' and decision != 'right':
+        print('Invalid')
+        decision = input('Do you choose to walk to the left or right tunnel?')
+    if decision.lower() == 'left':
         print('You discover a tortilla chest full of nacho helmets and armor.')
         items.append("Nacho Armor")
         items[0].append(5)
         print("After collecting the Nacho Armor, you turn around and go back the way you came.")
+    elif decision.lower() == 'right':
+        print("You find a Cinnamon Twist Staff on a pedestal.")
+        items.append("Cinnamon Staff")
+        items[1].append(4)
+        print("After collecting the Cinnamon Staff, you turn around and go back the way you came.")
     return decision
-
+def helpNachoVillager():
+    decision = input('Do you wish to help the villager find his coin?')
+    while decision.lower() != 'yes' and decision != 'no':
+        print('Invalid')
+        decision = input('Do you wish to help the villager find his lost coin?')
+    if decision.lower() == 'yes':
+        print('The villager is appreciative for your help!')
+        print('You both search eagerly for the coin.')
+        print('PLEASE WAIT WHILE YOU SEARCH')
+        time.sleep(15)
+        print('You found it!')
+        print('The villager gives you a golden Dorito necklace as a token of gratitude.')
+        items.append('Dorito Necklace')
+        items[2].append(6)
+        print('You continure your journey.')
+    elif: decision.lower() == 'no':
+        print('You walk past the crying villager and continue your journey.')
+        print('You find a wooden Dorito necklace on the cave floor.')
+        items.append('Dorito Necklace')
+        items[2].append(3)
 #This is an RPG Game!
 #Title Screen
 items = [[],[]]
@@ -108,7 +135,8 @@ if option_title == 'New Game':
     print('The left tunnel is glowing yellowish-orange.')
     print('The right tunnel is smells like cinnamon twists.')
     decision = goLeftOrRightDownTunnel()
-            
+    print('You are approached by a crying villager who needs help finding his lost coin.')
+    decision = helpNachoVillager():
     
 
 
